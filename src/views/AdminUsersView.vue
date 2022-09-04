@@ -71,27 +71,23 @@
 </template>
 
 <script>
+        import { mapActions } from 'vuex';
 export default {
-    mounted() {
-        this.$store.dispatch("getUsers");
-    },
     computed: {
-        users() {
-            return this.$store.state.users;
+            users() {
+                return this.$store.state.users
+            }
         },
-        user() {
-            return this.$store.state.user;
+    mounted() {
+            this.$store.dispatch('getUsers');
         },
-    },
-    methods: {
-         deleteUser(id) {
-            return this.$store.dispatch("deleteUser", id);
-        },
-         updateUser(id) {
-            return this.$store.dispatch("updateUser", id);
-        },
-    },
-};
+        methods: {
+            getPrograms() {
+                this.store.dispatch("getUser");
+            },
+            ...mapActions(["getUser"]),
+        }
+    }
 </script>
 
 <style scoped>

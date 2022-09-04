@@ -14,6 +14,7 @@ export default createStore({
     program: null,
    plans: null,
    token: null,
+   asc: true,
    cart: []
  },
  //  getters: {
@@ -181,14 +182,111 @@ export default createStore({
    }    
 },
 
- // GET A SINGLE PRODUCT BY ID
- getProduct: async (context, id) => {
-  fetch(`${fitnessUrl}/products/${id}`)
+ // GET A SINGLE PROGRAM BY ID
+ getProgram: async (context, id) => {
+  fetch(`${fitnessUrl}/programs/${id}`)
     .then((res) => res.json())
     .then((product) => {
-      console.log(product), context.commit("setProduct", product);
+      console.log(product), context.commit("setProgram", program);
     });
 },
+
+
+  // DELETE PROGRAM USING ID
+  deleteProgram: async (context, id) => {
+    fetch(`${fitnessUrl}/programs/${id}`, {
+      method: "DELETE",
+    })
+    .then((response) => response.json())
+    .then(() => context.dispatch("getPrograms"));
+  },
+
+  
+  // UPDATE PROGRAM USING ID
+  updateProgram: async (context, program) => {
+    const {
+      title,
+      category,
+      price,
+      description,
+      gender: gender
+    } = program;
+    fetch(`${fitnessUrl}/programs/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        title: title,
+        category: category,
+        price: price,
+        description: description,
+        gender: gender
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => context.commit("setProgram", json));
+  },
+
+  addingProgram: async (context, program) => {
+    const {
+      title,
+      imgURL,
+      category,
+      price,
+      description,
+      gender,
+    } = program;
+    fetch(`${fitnessUrl}/programs`, {
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        imgURL: imgURL,
+        category: category,
+        price: price,
+        description: description,
+        gender: gender
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => context.commit("setProgram", json));
+  },
+
+  // DELETE USER USING ID
+  deleteUser: async (context, id) => {
+    fetch(`${fitnessUrl}/users/` + id, {
+      method: "DELETE",
+    })
+    .then((response) => response.json())
+    .then(() => context.dispatch("getUser"));
+  },
+
+  // UPDATE USER BY ID
+  updateUser: async (context, user) => {
+    const {
+      fullname,
+      email,
+      joinDate
+      
+    } = user;
+    fetch(`${fitnessUrl}/users/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        fullname: fullname,
+        email: email,
+        joinDate: joinDate,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => context.commit("setUser", json));
+  },
+
 
 
 

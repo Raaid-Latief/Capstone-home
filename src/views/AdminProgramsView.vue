@@ -48,7 +48,7 @@
                       class="form-control mb-2"
                       id="floatingName"
                       placeholder="NAME"
-                      v-model="name"
+                      v-model="TITLE"
                     />
                     <label for="floatingName">TITLE</label>
                   </div>
@@ -58,7 +58,7 @@
                       class="form-control mb-2"
                       id="floatingImage"
                       placeholder="IMAGE"
-                      v-model="image"
+                      v-model="imgURL"
                     />
                     <label for="floatingImage">IMAGE</label>
                   </div>
@@ -93,19 +93,6 @@
                       v-model="description"
                     />
                     <label for="floatingDescription">DESCRIPTION</label>
-                  </div>
-                  <div class="size form-floating mb-2">
-                    <select class="form-select my-1" v-model="size">
-                      <option selected>Open this select menu</option>
-                      <option value="small">Small</option>
-                      <option value="medium">Medium</option>
-                      <option value="big">Big</option>
-                      <option value="regular">Regular</option>
-                      <option value="queen">Queen</option>
-                      <option value="king">King</option>
-                      <option value="single">Single</option>
-                    </select>
-                    <label for="floatingSize">SIZE</label>
                   </div>
                   <button type="submit" class="button">SAVE</button>
                 </form>
@@ -219,7 +206,7 @@
                             class="form-control mb-2"
                             id="floatingPrice"
                             placeholder="PRICE"
-                            v-model="product.price"
+                            v-model="program.price"
                           />
                           <label for="floatingPrice">PRICE</label>
                         </div>
@@ -229,22 +216,9 @@
                             class="form-control mb-2"
                             id="floatingDescription"
                             placeholder="DESCRIPTION"
-                            v-model="product.description"
+                            v-model="program.description"
                           />
                           <label for="floatingDescription">DESCRIPTION</label>
-                        </div>
-                        <div class="size form-floating mb-2">
-                          <select class="form-select my-1" v-model="product.size">
-                            <option selected>Open this select menu</option>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="big">Big</option>
-                            <option value="regular">Regular</option>
-                            <option value="queen">Queen</option>
-                            <option value="king">King</option>
-                            <option value="single">Single</option>
-                          </select>
-                          <label for="floatingSize">SIZE</label>
                         </div>
                         <button type="submit" class="button">SAVE</button>
                       </form>
@@ -282,11 +256,9 @@
       return {
         search: "",
         category: "all",
-        name: "",
-        image: "",
+        title: "",
+        imgURL: "",
         price: "",
-        color: "",
-        size: "",
         description: "",
       };
     },
@@ -302,7 +274,7 @@
           let isMatch = true;
           if (!program.title?.toLowerCase().includes(this.search.toLowerCase()))
             isMatch = false;
-          if (this.category !== "all" && product.category !== this.category)
+          if (this.category !== "all" && program.category !== this.category)
             isMatch = false;
           return isMatch;
         });

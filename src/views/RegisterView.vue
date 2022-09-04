@@ -41,7 +41,7 @@
   export default {
       data() {
           return {
-              full_name: "",
+              fullname: "",
               email: "",
               password: "",
               joinDate: "",
@@ -51,7 +51,7 @@
       methods: {
           Register() {
               this.$store.dispatch("Register", {
-                  full_name: this.full_name,
+                  fullname: this.fullname,
                   email: this.email,
                   password: this.password,
                   joinDate: this.joinDate,
