@@ -13,7 +13,7 @@
             </p>
             <p>
               <a href="https://codepen.io/your-work/"
-                ><i class="fab fa-codepen"></i> Codepen</a
+                ><i class="fab fa-instagram"></i> Instagram</a
               >
             </p>
             <p>

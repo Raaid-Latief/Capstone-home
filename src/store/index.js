@@ -250,7 +250,7 @@ export default createStore({
         (program) => program.id != id
       );
       context.commit("clearCart", emptyCart);
-      alert("ORDER SUCCESSFULLY PLACED");
+      alert("Thank You for your Purchase, Your Program will be sent to your email");
     },
 
 
@@ -332,7 +332,6 @@ export default createStore({
     const {
       fullname,
       email,
-      joinDate
       
     } = user;
     fetch(`${fitnessUrl}/users/${id}`, {
@@ -340,7 +339,6 @@ export default createStore({
       body: JSON.stringify({
         fullname: fullname,
         email: email,
-        joinDate: joinDate,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",

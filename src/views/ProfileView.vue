@@ -1,6 +1,50 @@
 <template>
   <br>
   <br>
+  <br>
+<br>
+
+
+  <div class="button">
+          <button class="btn" @click="deleteUser(user.user_id)"><i class="fa-solid fa-trash"></i><span class="ms-2">DELETE</span></button>
+          <button type="button" class="btn btn-primary ms-2 my-2" @click="Logout()">LOGOUT</button>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary ms-2 my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-pen"></i><span class="ms-2">EDIT USER</span>
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-dark" id="exampleModalLabel">EDIT USER</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form @submit.prevent="updateUser(user.user_id)">
+                    <div class="fullname form-floating">
+                      <input type="text" class="form-control mb-2" id="floatingFullName" placeholder="FULL NAME" v-model="user.fullname"/>
+                      <label for="floatingFullName">FULL NAME</label>
+                    </div>
+                    <div class="email form-floating">
+                      <input type="text" class="form-control mb-2" id="floatingEmail" placeholder="EMAIL" v-model="user.email"/>
+                      <label for="floatingEmail">EMAIL</label>
+                    </div>
+                    <button type="submit" class="button">Save</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="button btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="button btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+
+
 <section class="Profile">
     <div class="container-fluid">
 
@@ -42,6 +86,18 @@ import { mapActions } from 'vuex';
         return this.$store.state.user;
       },
     },
+    methods: {
+    updateUser(id) {
+      return this.$store.dispatch("updateUser", id);
+    },
+    Logout() {
+      this.$store.commit("Logout");
+      this.$router.push("/");
+    },
+    deleteUser(id) {
+      return this.$store.dispatch("deleteUser", id);
+    },
+  },
     // mounted() {
     //   this.$store.dispatch("getUser", this.$route.params.id);
     // },

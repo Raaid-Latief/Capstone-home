@@ -1,7 +1,31 @@
 <template>
+    <br>
+    <br>
+    <br>
+
     <div class="container-fluid">
         <h1>SHOPPING CART<span class="text-white ms-2"><i class="fa-solid fa-exclamation"></i><i class="fa-solid fa-exclamation ms-2"></i></span></h1>
         <div class="row">
+            
+            <div class="col-lg-4">
+                <div class="card">
+                    <h5>CART SUMMARY</h5>
+                    <div class="cart-details">
+                        <div class="row my-3">
+                            <p>Total Amount:</p>
+                            <p>Shipping:</p>
+                        </div>
+                        <div class="row my-3">
+                            <p>R{{ calculatePrice }}</p>
+                            <p>Free shipping</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-lg my-2" @click="deleteCart(program)">Checkout</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-8">
                 <div class="box">
                     <div class="content">
@@ -21,26 +45,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <h5>CART SUMMARY</h5>
-                    <div class="cart-details">
-                        <div class="row my-3">
-                            <p>Total Amount:</p>
-                            <p>Discount:</p>
-                            <p>Shipping:</p>
-                        </div>
-                        <div class="row my-3">
-                            <p>R{{ calculatePrice }}</p>
-                            <p>R0</p>
-                            <p>Free shipping</p>
-                        </div>
-                    </div>
-                    <div class="">
-                        <button type="submit" class="btn btn-lg my-2" @click="deleteCart(program)">Checkout</button>
                     </div>
                 </div>
             </div>
