@@ -2,27 +2,28 @@
     <div class="container-fluid">
       <h1>REGISTER<span class="text-white ms-2"><i class="fa-solid fa-exclamation"></i><i class="fa-solid fa-exclamation ms-2"></i></span></h1>
       <div class="output my-5">
-          <form target="_blank" action="https://formspree.io/f/xeqnrenb" method="POST" class="row">
-              <div class="col-md-12 p-2">
-                  <label for="inputFull" class="form-label">FULL NAME</label>
-                  <input type="text" v-model="fullname" class="form-control p-2" id="inputFull" placeholder="Type your fullname here..." required>
-              </div>
-              <div class="col-md-12 p-2">
-                  <label for="inputEmail" class="form-label">EMAIL</label>
-                  <input type="text" v-model="email" class="form-control p-2" id="inputEmail" placeholder="Type your email here..." required>
-              </div>
-              <div class="col-md-12 p-2">
-                  <label for="inputPassword" class="form-label">PASSWORD</label>
-                  <input type="password" v-model="password" class="form-control p-2" id="inputPassword" placeholder="Type your password here..." required>
-              </div>
-               <div class="col-md-12 p-2">
-                  <label for="inputjoinDate" class="form-label">JOIN DATE</label>
-                  <input type="text" v-model="joinDate" class="form-control p-2" id="inputjoinDate" placeholder="Join Date here..." required>
-              </div>
-              <div class="col-12">
-                  <button type="submit" class="btn btn-primary p-2 mt-2" @click.prevent="Register()">Register</button>
-              </div>
-          </form>
+          <form>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+                              <input type="text" v-model="fullname" class="form-control"  id="exampleFormControlInput1" placeholder="John Doe">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Email</label>
+                              <input type="email" v-model="email" class="form-control" required id="exampleFormControlInput1" placeholder="johndoe23@gmail.com">
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Password</label>
+                          <input type="password" v-model="password" class="form-control" required id="exampleFormControlInput1" placeholder="password1">
+                      </div>
+  
+                  <button type="submit" @click.prevent="Register()" class="btn">Sign up</button>
+                  </div>
+              </form>
           <div class="mt-5">
           <p>
             Already got an account?
@@ -44,8 +45,6 @@
               fullname: "",
               email: "",
               password: "",
-              joinDate: "",
-              role: "user",
           };
       },
       methods: {
@@ -54,8 +53,6 @@
                   fullname: this.fullname,
                   email: this.email,
                   password: this.password,
-                  joinDate: this.joinDate,
-                  role: "user",
               })
           }
       }

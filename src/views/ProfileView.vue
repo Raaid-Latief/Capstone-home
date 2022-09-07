@@ -1,6 +1,11 @@
 <template>
+  <br>
+  <br>
+<section class="Profile">
     <div class="container-fluid">
-      <h1>MY PROFILE<span class="text-center ms-2"><i class="fa-solid fa-exclamation"></i><i class="fa-solid fa-exclamation ms-2"></i></span></h1>
+
+      
+      <h1>Your Profile<span class="text-center ms-2"></span></h1>
       <div class="row my-5 mx-4">
       
         <div class="acc col-lg-7 p-3 my-2">
@@ -17,10 +22,12 @@
         </div>
       </div>
     </div>
+  </section> 
   </template>
   
   <script>
-        import { mapActions } from 'vuex';
+import Footer from "../components/Footer.vue";
+import { mapActions } from 'vuex';
   export default {
     // computed: {
     //   user() {
@@ -42,11 +49,30 @@
   </script>
   
   <style scoped>
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+  }
+
+.Profile{
+  padding-top: 150px;
+background-image: url(https://i.postimg.cc/SsSc8CRp/fantasy-3281738-1920.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+     background-size: cover;
+     overflow-x: hidden;
+}
+
+  .login{
+    color: black;
   }
   
   .container-fluid {
@@ -68,7 +94,7 @@
   }
   
 .acc{
-    background-color: aqua;
+    background-color: #016300;
 }
   .display {
     height: 50vh;

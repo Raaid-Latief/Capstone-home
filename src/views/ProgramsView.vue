@@ -1,6 +1,8 @@
 <template>
+    <br>
+    <br>
     <div class="container-fluid">
-      <h1>PROGRAMS<span class="text-white ms-2"><i class="fa-solid fa-exclamation"></i><i class="fa-solid fa-exclamation ms-2"></i></span></h1>
+<h1 class="text-center mt-5">Choose from our wide selection of carefully curated Programs</h1>
       <div class="functions my-5">
               <button class="btn ms-2" @click="sortPrograms">
                   SORT BY PRICE <i class="fa-solid fa-arrow-up-arrow-down"></i>
@@ -12,33 +14,49 @@
                   <option value="hypertrophy">Hypertrophy</option>
                   <option value="powerbuilding">Powerbuilding</option>
               </select>
-              <button class="btn ms-3 my-2" @click="sortProgram">
+              <button class="btn ms-3 my-2" @click="sortPrograms">
                   SORT BY NAME
               </button>
       </div>
       <div class="programs">
-          <div class="cards" v-for="program in Programs" :key="program.program_id">
-              <div class="row">
-                  <div class="col-6">
-                      <img :src="program.imgURL" class="img-fluid" />
-                  </div>
-                  <div class="col-6">
-                      <h5>{{ program.title }}</h5>
-                      <p class="py-2"><span>Category</span>: {{ program.category }}</p>
-                      <p class="py-2"><span>Price</span>: R{{ program.price }}</p>
-                      <p class="py-2"><span>Description</span>: {{ program.description }}</p>
-                  </div>
-                  <!-- <div class="buttons mb-2">
-                      <router-link :to="{ name: 'program', params: { id: program.product_id} }">
-                      <button class="btn btn-lg ms-2 my-1">
-                          VIEW PRODUCT
-                      </button>
-                      </router-link>
-                      <button @click="addToCart(product)" class="btn btn-lg ms-2 my-1">
-                          ADD TO CART
-                      </button>
-                  </div> -->
-              </div>
+        
+          <div class="row">
+              <div class="container">
+                <div class="row">
+                <div class="cards mx-auto text-center lg-col-4 col-md-6 mb-5"  v-for="program in Programs" :key="program.program_id">
+                    <img :src="program.imgURL" class="img-fluid" />
+    <div class="card-body">
+      <div class="row">
+        <div class="card-title">
+            <h4 class="text-center">{{ program.title }}</h4>
+            <p class="py-2"><span>Price</span>: R{{ program.price }}</p>
+            <p class="py-2"><span>Category</span>: {{ program.category }}</p>
+        </div>
+        <div class="buttons mb-2">
+                    <router-link :to="{ name: 'program', params: { id: program.program_id} }">
+                    <button class="btn btn-lg ms-2 my-1">
+                        VIEW PRODUCT
+                    </button>
+                  </router-link>
+      </div>
+      <hr />
+      
+        <!-- <div class="btn">
+          <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+        </div> -->
+
+ <button @click="addToCart(program)" class="btn btn-lg ms-2 my-1">
+                        ADD TO CART
+                    </button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
           </div>
           <ProgramCard v-for="program of filteredPrograms" :key="program.program_id" :program="program" />
       </div>
@@ -48,6 +66,7 @@
   <script>
   import { mapActions, mapState } from "vuex";
   export default {
+    props: ["program_id"],
       // name: 'ProgramView',
       // components: {
       //     ProgramCard,
@@ -83,10 +102,10 @@
           getProgram() {
               this.$store.dispatch("getProgram");
           },
-          // ...mapActions(["getProgram"]),
-          // addToCart(item) {
-          //     this.$store.commit("updateCart", item);
-          // },
+          ...mapActions(["getProgram"]),
+          addToCart(program) {
+              this.$store.commit("updateCart", program);
+          },
           sortProgram() {
               this.$store.commit("sortProgramsByName");
           },
@@ -98,15 +117,74 @@
   </script>
   
   <style scoped>
+
+    
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.flex-container
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 0 auto;
+}
+.flex-container div.flex
+{
+    flex: auto;
+    width: 200px;
+    margin: 0;
+}
+.flex-container div.flex img
+{ 
+    width: 100%; 
+    height: auto;
+}
+
+h1{
+    text-shadow: 1px 1px 0px #016300;
+}
+
+.btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+  .btn {
+    background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  }
+  .btn:hover {
+      background-color: #fff;
+      color: black; 
+  }
+
+
+/* 
   * {
     margin: 0;
     padding: 0;
     box-sizing:border-box;
   }
-  .container-fluid h1 {
-      color: black;
-      text-shadow: 2px 3px 4px white; 
-  }
+
+  h1{
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: black;
+  text-shadow: 1px 1px 0px #016300;
+    font-size: 50px;
+    padding-top: 10px;
+
+}
   .col-6 img {
     width: 300px;
     height: 400px;
@@ -119,7 +197,8 @@
     transition:0.8s;
   }
   .cards {
-    width:600px;
+    
+    width:500px;
     min-height:550px;
     display:flex;
     flex-direction: row;
@@ -129,6 +208,7 @@
     border: 1px solid black;
     margin: 20px;
     background-color: rgba(0, 0, 0, 0.4);
+
     
   }
   .cards:hover img {
@@ -156,21 +236,23 @@
   span {
       color: black;
   }
-  .buttons {
+  .btn {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
   }
-  button.btn {
-      font-size: 16px;
-      background-color: black;
-      color: #fff;
-      min-height: 40px;
-      width: 200px;
-      padding: 5px;
-      text-align: center;
+  .btn {
+    background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
   }
-  button.btn:hover {
+  .btn:hover {
       background-color: #fff;
       color: black; 
   }
@@ -187,9 +269,6 @@
       color: black;
       text-shadow: 2px 2px 2px white;
   }
-  .fa-arrow-up-arrow-down{
-    color: aqua;
-  }
   @media screen and (max-width: 600px) {
       .buttons {
           display: flex;
@@ -197,5 +276,5 @@
           justify-content: center;
           align-items: center;
       }
-  }
+  } */
   </style>
