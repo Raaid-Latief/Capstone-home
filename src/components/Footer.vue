@@ -61,7 +61,7 @@
   }
   
   .footer{
-    background-color: #47CC18;
+    background-color: #0b3603;
     background-repeat: no-repeat;
     background-attachment: fixed;
   margin: 0%;
@@ -95,10 +95,10 @@
   }
   
   .footer .content a:hover {
-    border-bottom: 1px solid green;
+    border-bottom: 1px solid  #9d18cc;
   }
   .footer .content router-link:hover {
-      border-bottom: 1px solid green;
+      border-bottom: 1px solid  #9d18cc;
     
   }
   .footer .content h4 {
@@ -142,5 +142,4 @@
       position: unset;
     }
   }
-  
   </style>

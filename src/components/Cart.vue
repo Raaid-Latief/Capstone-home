@@ -4,7 +4,7 @@
     <br>
 
     <div class="container-fluid">
-        <h1>SHOPPING CART<span class="text-white ms-2"><i class="fa-solid fa-exclamation"></i><i class="fa-solid fa-exclamation ms-2"></i></span></h1>
+        <h1>Your Cart</h1>
         <div class="row">
             
             <div class="col-lg-4">
@@ -91,8 +91,11 @@ export default {
 }
 
 .container-fluid h1 {
-    color: black;
-    text-shadow: 2px 3px 4px white; 
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+color: #1B8008;
+  text-shadow: 2px 1px 0px black;
+
+font-size: 60px;
 }
 
 img {
@@ -108,8 +111,9 @@ img {
     padding: 10px;
     border: solid 1px black;
     justify-content: space-between;
-    background-color: #fff;
+    background-color: #0b3603;
     color: black;
+    background-image: linear-gradient(to bottom, #0b3603, #0c3903, #0c3c04, #0d3f04, #0e4204);
 }
 
 .cart-content {
@@ -120,9 +124,10 @@ img {
 .card {
     margin: 20px;
     padding: 10px;
-    border: solid 1px black;
-    color: black;
-    background-color: #fff;
+    border: solid 3px black;
+    color: white;
+    background-image: linear-gradient(to bottom, #0b3603, #0c3903, #0c3c04, #0d3f04, #0e4204);
+
 }
 
 .cart-details {
@@ -139,7 +144,7 @@ button.btn {
 }
 
 button.btn:hover {
-   background-color: #04bcff;;
+   background-color:  #9d18cc;
   color: black;
 }
 

@@ -49,7 +49,7 @@
     <div class="container-fluid">
 
       
-      <h1>Your Profile<span class="text-center ms-2"></span></h1>
+      <h1 class="yourProfile">Your Profile<span class="text-center ms-2"></span></h1>
       <div class="row my-5 mx-4">
       
         <div class="acc col-lg-7 p-3 my-2">
@@ -67,11 +67,12 @@
       </div>
     </div>
   </section> 
+  <Footer />
   </template>
   
   <script>
+
 import Footer from "../components/Footer.vue";
-import { mapActions } from 'vuex';
   export default {
     // computed: {
     //   user() {
@@ -79,29 +80,26 @@ import { mapActions } from 'vuex';
     //     return this.$store.state.user;
     //   },
     // },
-  
     props: ["user.user_id"],
     computed: {
-      user() {
-        return this.$store.state.user;
-      },
+        user() {
+            return this.$store.state.user;
+        },
     },
     methods: {
-    updateUser(id) {
-      return this.$store.dispatch("updateUser", id);
+        updateUser(id) {
+            return this.$store.dispatch("updateUser", id);
+        },
+        Logout() {
+            this.$store.commit("Logout");
+            this.$router.push("/");
+        },
+        deleteUser(id) {
+            return this.$store.dispatch("deleteUser", id);
+        },
     },
-    Logout() {
-      this.$store.commit("Logout");
-      this.$router.push("/");
-    },
-    deleteUser(id) {
-      return this.$store.dispatch("deleteUser", id);
-    },
-  },
-    // mounted() {
-    //   this.$store.dispatch("getUser", this.$route.params.id);
-    // },
-  };
+    components: { Footer }
+};
   </script>
   
   <style scoped>
@@ -126,6 +124,12 @@ background-image: url(https://i.postimg.cc/SsSc8CRp/fantasy-3281738-1920.jpg);
      background-size: cover;
      overflow-x: hidden;
 }
+
+.yourProfile{
+  color: black;
+  text-shadow: 2px 3px 4px #016300; 
+}
+
 
   .login{
     color: black;
@@ -158,6 +162,33 @@ background-image: url(https://i.postimg.cc/SsSc8CRp/fantasy-3281738-1920.jpg);
     background-color: rgb(56, 52, 52);
   }
   
+
+
+
+
+  .btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      padding-right: 20px;
+  }
+  .btn {
+    background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  }
+  .btn:hover {
+      background-color:  #9d18cc;
+      color: white; 
+  }
+
   
   @media screen and (max-width: 560px) {
   

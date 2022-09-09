@@ -12,8 +12,8 @@ import Contact from "@/components/Contact.vue";
 
 export default {
   components: {
-    Footer,
-    Contact
+    Contact, 
+    Footer
 },
 };
 </script>

@@ -6,7 +6,7 @@
     <div  class="container-fluid">
       <router-link to="/programs">
           <button type="button" class="btn btn-lg ms-3 my-2">
-              View all Programs
+              GO BACK
           </button>
       </router-link>
     
@@ -17,9 +17,9 @@
               </div>
               <div class="details mt-5 col-lg-6">
                   <h5>{{ program.title }}</h5>
-                  <p class="py-2"><span>Category</span>: {{ program.category }}</p>
+                  <p class="category py-2"> {{ program.category }}</p>
                  
-                  <p class="py-2"><span></span>: {{ program.description }}</p>
+                  <p class="description py-2"><span></span>  {{ program.description }}</p>
               </div>
               <div class="row">
               <div class="buttons mt-2 text-center col-lg-6">
@@ -65,9 +65,25 @@
   .container-fluid {
       display: block;
      padding-bottom: 30px;
-      background-color: aqua;
       width: auto;
-      
+  }
+
+  .grow img{
+transition: 1s ease;
+width: auto;
+height: 650px;
+}
+
+.grow img:hover{
+-webkit-transform: scale(1.2);
+-ms-transform: scale(1.2);
+transform: scale(1.2);
+transition: 1s ease;
+}
+
+  .image{
+    border: 2px 2px #9d18cc;
+    
 
   }
   
@@ -75,11 +91,10 @@
     width: 400px;
     min-height: 300px;
     padding-top: 40px;
-    /* object-fit:cover;
-    -webkit-box-reflect:below 2px linear-gradient(transparent, transparent, #0004);
-    transform-origin:center;
-    transform:perspective(800px) rotateY(25deg);
-    transition:0.8s; */
+    box-shadow: 10px 10px 5px black;
+      -moz-box-shadow: 10px 10px 5px black;
+      -webkit-box-shadow: 10px 10px 5px black;
+      -khtml-box-shadow: 10px 10px 5px black;
   }
   
   .cards {
@@ -92,12 +107,13 @@
     align-items:center;
     gap: 20px;
     border: 1px solid black;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(to bottom, #0b3603, #0c3903, #0c3c04, #0d3f04, #0e4204);  
+    
   }
   
-  .cards:hover img {
+  /* .cards:hover img {
     opacity:0.3;
-  }
+  } */
   
   .cards img:hover {
     transform:perspective(800px)       rotateY(0deg);
@@ -134,9 +150,27 @@
   }
 
   .py-2{
+
     padding-left: 20px;
   }
   
+  p{
+    color: white;
+    padding-right: 100px;
+
+  }
+
+  .category{
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
+
+  .description{
+    font-size: 26px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  }
+
   @media screen and (max-width: 556px) {
       .cards {
           width: 350px;
